@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <meta content="description" name="description">
+  <meta name="google" content="notranslate" />
+  
+  <style>
+    .body{
+      background-color: #b61924;
+    }
+    .inside {
+    position: absolute;
+    bottom: 0;
+}
+  
+  </style>
+  <!-- Disable tap highlight on IE -->
+  <meta name="msapplication-tap-highlight" content="no">
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-icon-180x180.png">
+  <link href="./assets/favicon.ico" rel="icon">
+  <title>Three Amigos </title>  
+
+
+<link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+
+</head>
+
+<body style="background-color: white;">
+
+    
+<!-- Add your content of header -->
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="/static/img/sample.png" alt="..." height="40"> Three Amigos
+      </a>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{ url_for('index')}}">Home</a>
+          </li>
+          
+        
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+
+  <!-- Page Content -->
+<!-- home wrapper -->
+<div class="home-wrapper">
+  <div class="container">
+
+   
+      <div class="row" style="margin-top: 20px">
+             
+          <div class="col-sm-6 " style="margin-top: 10px">
+                <div class="card  " style="box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.644);">
+                  
+                  <div class="row ">
+                    
+                    <div class="col-md-12">
+                      <!-- <img src="/static/img/sample.png" class="card-img-top" alt="..."> -->
+                      <div class="card-body">
+                        <h4 class="card-title">Start Testing</h4>
+                        
+                        <p class="card-text text-wrap text-sm-start">
+                          
+                            <form action = "http://127.0.0.1:5000/"  method="POST">
+                                <input name="text">
+                                <input type="submit">
+                            </form>
+                         
+                           <p>{{Res}} </p>
+                        
+                        </p>
+                        
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            
+
+
+     </div>
+</div>
+      
+    
+
+
+    </div>
+  </div>
+
+<!-- /home wrapper -->
+
+
+
+
+<!--Bootsstrap 5.1.0 -->
+<script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+
+    
+    
+</body>
+
+
+<footer style="margin-top: 20px;" class="bg-dark text-center text-lg-start ">
+  <!-- Copyright -->
+  <div class="text-center p-3" style="color: antiquewhite;">
+    Copyright © 2022 Three Amigos. All Rights Reserved.
+    
+  </div>
+  <!-- Copyright -->
+</footer>
+
+</html>
