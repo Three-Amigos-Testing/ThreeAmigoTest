@@ -9,7 +9,8 @@ Steps to use the the application:
      ![Step 2](/assets/step2.JPG)
   5. Wait for scanning to finish (NOTE: depending on the number of vulnerabilities this may take some time...)  
      ![Step 3](/assets/step3.JPG)
-  7. Read the results
+  7. Read the results  
+     ![Step 4](/assets/step4.JPG)
 
 
 
