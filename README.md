@@ -3,11 +3,11 @@
 This web application takes in websites and tests them against various penetration testing algorithms, then outputs the results. Simply insert the link in the textbox and hit submit and after scanning a full report of all potential vulnerabilities to appear. This web application tests the website based on the Top OWSAP vulnerabilties.  
 
 Steps to use the the application:
-  1. Insert link into text box
+  1. Insert link into text box  
      ![Step 1](/assets/step1.JPG)
-  3. Hit 'Submit'
+  3. Hit 'Submit'  
      ![Step 2](/assets/step2.JPG)
-  5. Wait for scanning to finish (NOTE: depending on the number of vulnerabilities this may take some time...)
+  5. Wait for scanning to finish (NOTE: depending on the number of vulnerabilities this may take some time...)  
      ![Step 3](/assets/step3.JPG)
   7. Read the results
 
