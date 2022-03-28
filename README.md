@@ -4,9 +4,12 @@ This web application takes in websites and tests them against various penetratio
 
 Steps to use the the application:
   1. Insert link into text box
-  2. Hit 'Submit'
-  3. Wait for scanning to finish (NOTE: depending on the number of vulnerabilities this may take some time...)
-  4. Read the results
+     ![Step 1](/assets/step1.JPG)
+  3. Hit 'Submit'
+     ![Step 2](/assets/step2.JPG)
+  5. Wait for scanning to finish (NOTE: depending on the number of vulnerabilities this may take some time...)
+     ![Step 3](/assets/step3.JPG)
+  7. Read the results
 
 
 
