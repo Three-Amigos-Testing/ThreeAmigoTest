@@ -1,7 +1,11 @@
 <html>
   <head>
+    <script> window.alert = function() {};</script>
     <script>
-      fetch('results'); // load the slow url then navigate
+      function navigate() {
+        window.location.href = 'results';  // redirect when done!
+      }
+      fetch('scanning').then(navigate); // load the slow url then navigate
     </script>
   </head>
   <body>

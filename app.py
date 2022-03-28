@@ -1,9 +1,14 @@
-from flask import Flask, request, jsonify, render_template, abort, redirect, url_for
+from flask import Flask, request, jsonify, render_template, abort, redirect, url_for, session
 from flask_caching import Cache
 import time
 from pprint import pprint
 from zapv2 import ZAPv2
 import json
+import json2table
+
+import logging
+log = logging.getLogger('werkzeug')
+log.setLevel(logging.ERROR)
 
 config = {
     "DEBUG": False,             # some Flask specific configs
@@ -14,13 +19,16 @@ config = {
 app = Flask(__name__)
 app.config.from_mapping(config) #set app with configurations
 cache = Cache(app)              #create cache instance for app
+app.secret_key = 'ThreeAmigos'
+
+global TARGET_WEBSITE
 
 def zap(url):
   print("starting zap")
   # A helpful reference: https://github.com/zaproxy/zaproxy/wiki/ApiPython
   
   # The value of api must match api.key when running the daemon
-  apikey = "qvjjpuvarvetnb5til3lll3idl"
+  apikey = "uhot4eld0nvar4c5grjoum9gq9"
 
   target = url
 
@@ -66,28 +74,123 @@ def zap(url):
   print ('Hosts: {}'.format(', '.join(zap.core.hosts)))
   print ('Alerts: ')
   pprint (zap.core.alerts())
-
-  f = open("output.txt", "w")
-  for x in zap.core.alerts():
-    f.write(str(x)+',')
+  # print(type(zap.core.alerts()))
+  f = open("output.json", "w")
+  f.write(json.dumps(zap.core.alerts()))
   f.close()
-
+  
+  
+#main route to ask for input
 @app.route("/", methods=['GET','POST'])
 def index():
   if request.method == 'POST':
+    session['target'] = request.form['text']
     ## recieve input from text box    
     return render_template('loading.html')
   return render_template('index.html')
 
+#this route is used to run the tests on the website
+@app.route("/scanning")
+def scanning():
+  zap(session['target'])
+  return 'ok'
+
+#this route will parse the results and output it to the page
 @app.route("/results")
 def results():
-  zap('https://google-gruyere.appspot.com/526435151700772202118564821480864815257/')
   ##parse through json
   ## creates string 
   ## output string on page
-  return 'hi'
+  f = open('output.json')
+  infoFromJson = json.load(f)
+  
+  above = ''' <!DOCTYPE html>
+              <html lang="en">
+              <script> window.alert = function() {{}};</script>
+              <head>
+                <meta charset="UTF-8">
+                <meta content="IE=edge" http-equiv="X-UA-Compatible">
+                <meta content="width=device-width,initial-scale=1" name="viewport">
+                <meta content="description" name="description">
+                <meta name="google" content="notranslate" />
+                
+                <style>
+                  .body{
+                    background-color: #b61924;
+                  }
+                  .inside {
+                  position: absolute;
+                  bottom: 0;
+              }
+                
+                </style>
+                <!-- Disable tap highlight on IE -->
+                <meta name="msapplication-tap-highlight" content="no">
+                
+                <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-icon-180x180.png">
+                <link href="./assets/favicon.ico" rel="icon">
+                <title>Three Amigos </title>  
+
+
+              <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+
+              </head>
+
+              <body style="background-color: white;">
+
+                  
+              <!-- Add your content of header -->
+
+              <!-- Navigation -->
+              <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                  <div class="container">
+                    <a class="navbar-brand" href="#">
+                      <img src="/static/img/sample.png" alt="..." height="40"> Three Amigos
+                    </a>
+                    
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                      <ul class="navbar-nav ms-auto">                     
+                      
+                      </ul>
+                    </div>
+                  </div>
+                </nav>
+            '''
+
+  heading = '<h1 style="text-align:center; "> Results from Three Amigos Testing </h1>'
+  table = '<style>table, th, td {  border: 1px solid; margin:auto; width: 60%} table{border: 3px solid}</style>'
+
+  below = ''' <!--Bootsstrap 5.1.0 -->
+              <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+              <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+                  
+                  
+              </body>
+
+
+              <footer style="margin-top: 20px;" class="bg-dark text-center text-lg-start ">
+                <!-- Copyright -->
+                <div class="text-center p-3" style="color: antiquewhite;">
+                  Copyright © 2022 Three Amigos. All Rights Reserved.
+                  
+                </div>
+                <!-- Copyright -->
+              </footer>
+
+              </html>
+          '''
+  for x in infoFromJson:
+    table += "<br>"+ json2table.convert(x)
+
+  table.replace("alert","alrt")
+  return str(above+heading+table+below)
+
 
 if __name__ == "__main__":
-  app.run(debug=True)
+  app.run()
 
 
