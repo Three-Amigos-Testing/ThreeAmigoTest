@@ -68,21 +68,20 @@ def zap(url):
   pprint (zap.core.alerts())
 
   f = open("output.txt", "w")
-  f.write(str(zap.core.alerts()))
+  for x in zap.core.alerts():
+    f.write(str(x)+',')
   f.close()
-  return redirect(url_for('results'))
 
 @app.route("/", methods=['GET','POST'])
 def index():
   if request.method == 'POST':
-    ## recieve input from text box
-    
-    zap('https://google-gruyere.appspot.com/526435151700772202118564821480864815257/')
-    return "<p> Scanning in Progress...<p>"
+    ## recieve input from text box    
+    return render_template('loading.html')
   return render_template('index.html')
 
 @app.route("/results")
 def results():
+  zap('https://google-gruyere.appspot.com/526435151700772202118564821480864815257/')
   ##parse through json
   ## creates string 
   ## output string on page
