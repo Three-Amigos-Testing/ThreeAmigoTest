@@ -20,7 +20,7 @@ def zap(url):
   # A helpful reference: https://github.com/zaproxy/zaproxy/wiki/ApiPython
   
   # The value of api must match api.key when running the daemon
-  apikey = "uhot4eld0nvar4c5grjoum9gq9"
+  apikey = "qvjjpuvarvetnb5til3lll3idl"
 
   target = url
 
@@ -68,16 +68,15 @@ def zap(url):
   pprint (zap.core.alerts())
 
   f = open("output.txt", "w")
-  f.write(zap.core.alerts())
+  f.write(str(zap.core.alerts()))
   f.close()
   return redirect(url_for('results'))
-
-
 
 @app.route("/", methods=['GET','POST'])
 def index():
   if request.method == 'POST':
     ## recieve input from text box
+    
     zap('https://google-gruyere.appspot.com/526435151700772202118564821480864815257/')
     return "<p> Scanning in Progress...<p>"
   return render_template('index.html')
