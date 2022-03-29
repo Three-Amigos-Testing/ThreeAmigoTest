@@ -10,7 +10,7 @@ Steps to use the the application:
   5. Wait for scanning to finish (NOTE: depending on the number of vulnerabilities this may take some time...)  
      ![Step 3](/assets/step3.JPG)
   7. Read the results  
-     ![Step 4](<img width="1306" alt="image" src="https://user-images.githubusercontent.com/34112414/160511206-f0fd6e00-2c53-4091-80fe-9c4e9a668730.png">)
+     ![Step 4](/assets/step4.png)
 
 
 
