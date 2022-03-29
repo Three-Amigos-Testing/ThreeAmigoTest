@@ -23,6 +23,8 @@ app.secret_key = 'ThreeAmigos'
 
 global TARGET_WEBSITE
 
+time_ran = ""
+
 def zap(url):
   print("starting zap")
   # A helpful reference: https://github.com/zaproxy/zaproxy/wiki/ApiPython
@@ -92,8 +94,13 @@ def index():
 #this route is used to run the tests on the website
 @app.route("/scanning")
 def scanning():
+  start = time.time()
   zap(session['target'])
-  return 'ok'
+  done = time.time()
+  session['elapsed'] = str(done - start)
+  print( session['elapsed'])
+  
+  return 'elapsed'
 
 #this route will parse the results and output it to the page
 @app.route("/results")
@@ -160,8 +167,11 @@ def results():
                   </div>
                 </nav>
             '''
+  code =  str(session['elapsed'])
 
-  heading = '<h1 style="text-align:center; "> Results from Three Amigos Testing </h1>'
+  print(code)
+
+  heading = '<h1 style="text-align:center; "> Results from Three Amigos Testing </h1> <br> <p style="text-align: center;"> Time it took to scan: %s seconds</p> ' % code 
   table = '<style>table, th, td {  border: 1px solid; margin:auto; width: 60%} table{border: 3px solid}</style>'
 
   below = ''' <!--Bootsstrap 5.1.0 -->
