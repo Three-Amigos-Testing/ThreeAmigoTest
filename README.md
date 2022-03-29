@@ -1,6 +1,6 @@
 # ThreeAmigoTest  
 
-This web application takes in websites and tests them against various penetration testing algorithms, then outputs the results. Simply insert the link in the textbox and hit submit and after scanning a full report of all potential vulnerabilities to appear. This web application tests the website based on the Top OWSAP vulnerabilties.  
+This web application takes in websites and tests them against various web application penetration testing algorithms and vulnerabilities, then outputs the results. Simply insert the link in the textbox and hit submit and after scanning a full report of all potential vulnerabilities to appear with code fizes and possible solutions. This web application tests the website based on the Top 10 OWSAP vulnerabilties.  
 
 Steps to use the the application:
   1. Insert link into text box  
@@ -10,7 +10,7 @@ Steps to use the the application:
   5. Wait for scanning to finish (NOTE: depending on the number of vulnerabilities this may take some time...)  
      ![Step 3](/assets/step3.JPG)
   7. Read the results  
-     ![Step 4](/assets/step4.JPG)
+     ![Step 4](<img width="1306" alt="image" src="https://user-images.githubusercontent.com/34112414/160511206-f0fd6e00-2c53-4091-80fe-9c4e9a668730.png">)
 
 
 
@@ -28,3 +28,6 @@ Dependencies:
   - zapv2
   - time
   - pprint
+
+Front End: html, css, js
+Backend: python, flask
