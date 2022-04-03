@@ -10,12 +10,12 @@ Steps to use the the application:
   5. Wait for scanning to finish (NOTE: depending on the number of vulnerabilities this may take some time...)  
      ![Step 3](/assets/step3.JPG)
   7. Read the results  
-     ![Step 4](/assets/step4.png)
+     ![Step 4](/assets/step4.png)  
 
 
 
 
-NOTE: To run this application the ZAP API key is needed. Follow these steps to install:
+NOTE: To run this application the ZAP API key is needed. Follow these steps to install:  
      1. First go to https://www.zaproxy.org/download/ and download the appropriate exe file  
      2. run the exe file and open the application  
      3. goto Tools > Options > API  
