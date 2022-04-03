@@ -16,11 +16,11 @@ Steps to use the the application:
 
 
 NOTE: To run this application the ZAP API key is needed. Follow these steps to install:
-     1. First go to https://www.zaproxy.org/download/ and download the appropriate exe file
-     2. run the exe file and open the application
-     3. goto Tools > Options > API
-     4. copy the API KEY.
-     5. In the app.py file replace the api key with your own in Line 23
+     1. First go to https://www.zaproxy.org/download/ and download the appropriate exe file  
+     2. run the exe file and open the application  
+     3. goto Tools > Options > API  
+     4. copy the API KEY.  
+     5. In the app.py file replace the api key with your own in Line 23  
      
 Dependencies:
   - Flask
