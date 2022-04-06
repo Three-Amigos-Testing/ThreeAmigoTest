@@ -30,7 +30,7 @@ def zap(url):
   # A helpful reference: https://github.com/zaproxy/zaproxy/wiki/ApiPython
   
   # The value of api must match api.key when running the daemon
-  apikey = "uhot4eld0nvar4c5grjoum9gq9"
+  apikey = "#insert the api key"
 
   target = url
 
